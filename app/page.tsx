@@ -26,8 +26,8 @@ export default function Home() {
   }
 
   return (
-    <main className="grid grid-cols-[1fr_384px] min-h-screen">
-      <div className="flex flex-col justify-center items-center gap-4 p-24 w-full">
+    <main className="md:grid md:grid-cols-[1fr_384px] min-h-screen">
+      <div className="flex flex-col justify-center items-center gap-4 p-8 md:p-24 w-full">
         <h1 className="text-3xl text-white mb-8">What do you want to say?</h1>
 
         <form className="w-full text-center" onSubmit={handleSubmit}>
@@ -41,8 +41,8 @@ export default function Home() {
         </form>
       </div>
 
-      <div className="border-l border-gray-800 py-12 px-8">
-        <h2 className="mt-8 text-2xl text-white mb-8">History</h2>
+      <div className="border-l border-gray-800 py-8 md:py-12 px-8">
+        <h2 className="md:mt-8 text-2xl text-white mb-8">History</h2>
 
         {history.length ? (
           <ul className="space-y-4">
