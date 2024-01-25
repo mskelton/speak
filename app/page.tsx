@@ -1,17 +1,11 @@
 "use client";
 
 import { useState } from "react";
-
-function speak(text: string) {
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.rate = 1.3;
-
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(utterance);
-}
+import { speak } from "./utils/speech";
 
 export default function Home() {
   const [history, setHistory] = useState<string[]>([]);
+  // const [queue, setQueue] = useState<string[]>([]);
   const [text, setText] = useState("");
 
   function enqueue(text: string) {
@@ -41,7 +35,7 @@ export default function Home() {
         </form>
       </div>
 
-      <div className="border-l border-gray-800 py-8 md:py-12 px-8">
+      <div className="md:border-l border-gray-800 py-8 md:py-12 px-8">
         <h2 className="md:mt-8 text-2xl text-white mb-8">History</h2>
 
         {history.length ? (
@@ -54,7 +48,7 @@ export default function Home() {
                   <div className="flex justify-end">
                     <button
                       className="text-sm text-blue-500 hover:underline"
-                      onClick={() => enqueue(item)}
+                      onClick={() => speak(item)}
                     >
                       Replay
                     </button>
