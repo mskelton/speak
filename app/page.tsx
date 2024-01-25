@@ -20,7 +20,7 @@ export default function Home() {
   }
 
   return (
-    <main className="md:grid md:grid-cols-[1fr_384px] min-h-screen">
+    <main className="md:grid md:grid-cols-[1fr_384px] h-screen">
       <div className="flex flex-col justify-center items-center gap-4 p-8 md:p-24 w-full">
         <h1 className="text-3xl text-white mb-8">What do you want to say?</h1>
 
@@ -35,34 +35,38 @@ export default function Home() {
         </form>
       </div>
 
-      <div className="md:border-l border-gray-800 py-8 md:py-12 px-8">
-        <h2 className="md:mt-8 text-2xl text-white mb-8">History</h2>
+      <div className="md:border-l border-gray-800 h-full flex flex-col overflow-hidden">
+        <h2 className="md:mt-8 text-2xl text-white mb-8 pt-8 md:pt-12 px-8">
+          History
+        </h2>
 
-        {history.length ? (
-          <ul className="space-y-4">
-            {history.map((item, i) => (
-              <li key={i}>
-                <div className="text-gray-200 rounded-lg border border-gray-800 py-3 px-4">
-                  <p className="line-clamp-3">{item}</p>
+        <div className="pb-8 md:pb-12 px-8 overflow-y-auto max-h-full">
+          {history.length ? (
+            <ul className="space-y-4 ">
+              {history.map((item, i) => (
+                <li key={i}>
+                  <div className="text-gray-200 rounded-lg border border-gray-800 py-3 px-4">
+                    <p className="line-clamp-3">{item}</p>
 
-                  <div className="flex justify-end">
-                    <button
-                      className="text-sm text-blue-500 hover:underline"
-                      onClick={() => speak(item)}
-                    >
-                      Replay
-                    </button>
+                    <div className="flex justify-end">
+                      <button
+                        className="text-sm text-blue-500 hover:underline"
+                        onClick={() => speak(item)}
+                      >
+                        Replay
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-gray-400 text-sm">
-            Looks like you haven&rsquo;t said anything yet. Type a sentence to
-            start talking!
-          </p>
-        )}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-gray-400 text-sm">
+              Looks like you haven&rsquo;t said anything yet. Type a sentence to
+              start talking!
+            </p>
+          )}
+        </div>
       </div>
     </main>
   );
